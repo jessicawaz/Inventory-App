@@ -10,7 +10,7 @@ import invModel from "./models/inventoryModel.js";
 // GET
 router.get("/getInventory", (req, res) => {
   const uri =
-    "mongodb+srv://jesswaz24:oatMilk11@cluster0.jko7e.mongodb.net/myFirstDatabase?retryWrites=true&w=majority";
+    "mongodb+srv://jesswaz24:#####@cluster0.jko7e.mongodb.net/myFirstDatabase?retryWrites=true&w=majority";
   const client = new MongoClient(uri, {
     useNewUrlParser: true,
     useUnifiedTopology: true,
