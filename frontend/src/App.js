@@ -1,5 +1,5 @@
 import { BrowserRouter as Router } from "react-router-dom";
-import Inventory from "./components/Inventory/Inventory.js";
+import Inventory from "./components/Inventory.js";
 
 function App() {
   return (
