@@ -1,0 +1,23 @@
+.addInv {
+  padding-top: 30px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.addInv h1 {
+  font-size: small;
+  padding-top: 10px;
+}
+
+.inventory {
+  margin-left: auto;
+  margin-right: auto;
+  height: 100%;
+  width: 50%;
+}
+
+.table {
+  text-align: center;
+  margin-top: 50px;
+}
