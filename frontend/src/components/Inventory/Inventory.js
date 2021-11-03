@@ -11,7 +11,9 @@ const Inventory = () => {
   const [quantity, setQuantity] = useState(0);
   const [price, setPrice] = useState(0);
   const [items, setItems] = useState([]);
+  const [buttonClicked, setButtonClicked] = useState(false);
 
+  // Require all fields using yup
   const checkFields = yup.object().shape({
     itemName: yup.string().required(),
     barcode: yup.string().required(),
@@ -19,6 +21,7 @@ const Inventory = () => {
     price: yup.number().required(),
   });
 
+  // Get inventory from the backend API
   useEffect(() => {
     axios
       .get("http://localhost:5000/getInventory")
@@ -34,6 +37,7 @@ const Inventory = () => {
     };
     const fieldsEntered = await checkFields.isValid(formData);
 
+    // Add item to MongoDB if all fields are entered
     if (fieldsEntered) {
       axios.post("http://localhost:5000/newInventory", {
         itemName: itemName,
@@ -46,6 +50,7 @@ const Inventory = () => {
     }
   };
 
+  // Delete item from MongoDB using the backend API
   const deleteItem = (id) => {
     axios.delete(`http://localhost:5000/delete/${id}`);
   };
@@ -72,7 +77,7 @@ const Inventory = () => {
                     <td>{item.itemName}</td>
                     <td>{item.barcode}</td>
                     <td>{item.quantity}</td>
-                    <td>{item.price}</td>
+                    <td>${item.price}</td>
                     <td>
                       <a
                         className="btn"
@@ -93,58 +98,62 @@ const Inventory = () => {
       </div>
 
       <div className="addInv">
-        <button>Add New Inventory Log</button>
+        <button onClick={() => setButtonClicked(true)}>
+          Add New Inventory Log
+        </button>
       </div>
 
-      <div className="addInv">
-        <form>
-          <h1>Item Name</h1>
-          <input
-            onChange={(e) => {
-              setItemName(e.target.value);
-            }}
-            size="12"
-            type="text"
-            value={itemName.itemName}
-            name="itemName"
-          />
-          <h1>Barcode</h1>
-          <input
-            onChange={(e) => {
-              setBarcode(e.target.value);
-            }}
-            size="12"
-            type="text"
-            value={barcode.barcode}
-            name="barcode"
-          />
-          <h1>Quantity</h1>
-          <input
-            onChange={(e) => {
-              setQuantity(e.target.value);
-            }}
-            size="12"
-            type="text"
-            value={quantity.quantity}
-            name="quantity"
-          />
-          <h1>Price</h1>
-          <input
-            onChange={(e) => {
-              setPrice(e.target.value);
-            }}
-            size="12"
-            type="text"
-            value={price.price}
-            name="price"
-          />
-          <div className="addInv">
-            <button onClick={add} className="insert-btn">
-              Update Inventory
-            </button>
-          </div>
-        </form>
-      </div>
+      {buttonClicked ? (
+        <div className="addInv">
+          <form>
+            <h1>Item Name</h1>
+            <input
+              onChange={(e) => {
+                setItemName(e.target.value);
+              }}
+              size="12"
+              type="text"
+              value={itemName.itemName}
+              name="itemName"
+            />
+            <h1>Barcode</h1>
+            <input
+              onChange={(e) => {
+                setBarcode(e.target.value);
+              }}
+              size="12"
+              type="text"
+              value={barcode.barcode}
+              name="barcode"
+            />
+            <h1>Quantity</h1>
+            <input
+              onChange={(e) => {
+                setQuantity(e.target.value);
+              }}
+              size="12"
+              type="text"
+              value={quantity.quantity}
+              name="quantity"
+            />
+            <h1>Price</h1>
+            <input
+              onChange={(e) => {
+                setPrice(e.target.value);
+              }}
+              size="12"
+              type="text"
+              value={price.price}
+              name="price"
+            />
+            <div className="addInv">
+              <button onClick={add} className="insert-btn">
+                Update Inventory
+              </button>
+            </div>
+          </form>
+        </div>
+      ) : null}
     </div>
   );
 };
