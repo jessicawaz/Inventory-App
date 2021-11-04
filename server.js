@@ -2,6 +2,7 @@ import express from "express";
 import cors from "cors";
 import mongoose from "mongoose";
 import dotenv from "dotenv";
+import path from "path";
 
 const app = express();
 app.use(express.json());
@@ -31,6 +32,14 @@ import postInventory from "./API/inventory.js";
 // Use API
 app.use("/", getInventory);
 app.use("/", postInventory);
+
+if (process.env.NODE_ENV === "production") {
+  app.use(express.static("frontend/build"));
+
+  app.get("*", (req, res) => {
+    res.sendFile(path.resolve(__dirname, "frontend", "build", "index.html"));
+  });
+}
 
 // Active port
 app.listen(PORT, () => console.log(`Server started on port ${PORT}`));
