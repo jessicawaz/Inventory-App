@@ -12,10 +12,13 @@ const PORT = process.env.PORT || 5000;
 // connect to MongoDB
 dotenv.config();
 mongoose
-  .connect(process.env.MONGO_URI, {
-    useUnifiedTopology: true,
-    useNewUrlParser: true,
-  })
+  .connect(
+    "mongodb+srv://jesswaz24:oatMilk11@cluster0.jko7e.mongodb.net/Inventory?retryWrites=true&w=majority",
+    {
+      useUnifiedTopology: true,
+      useNewUrlParser: true,
+    }
+  )
   .then(console.log("Connected to MongoDB"))
   .catch((err) => {
     console.log(`Connection Error: ${err.message}`);

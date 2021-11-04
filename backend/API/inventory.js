@@ -13,7 +13,7 @@ router.get("/getInventory", async (req, res) => {
     const getInventory = await invModel.find();
     res.status(200).json(getInventory);
   } catch (err) {
-    res.status(404).json({ message: err.massage });
+    res.status(404).json({ message: err.message });
   }
 });
 
