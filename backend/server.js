@@ -13,7 +13,7 @@ const PORT = process.env.PORT || 5000;
 dotenv.config();
 mongoose
   .connect(
-    "mongodb+srv://jesswaz24:oatMilk11@cluster0.jko7e.mongodb.net/Inventory?retryWrites=true&w=majority",
+    process.env.MONGO_URI,
     {
       useUnifiedTopology: true,
       useNewUrlParser: true,
