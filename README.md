@@ -17,3 +17,6 @@ To run the project, install the project locally using npm
   - View already saved inventory items in the table
   - Add new items in the form below by clicking the "add" button
   - Delete items in the table with the "trash" button
+
+
+Authentication learned from TraversyMedia.
