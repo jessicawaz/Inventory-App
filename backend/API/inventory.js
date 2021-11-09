@@ -1,6 +1,5 @@
 import express from "express";
-import mongodb from "mongodb";
-const MongoClient = mongodb.MongoClient;
+import auth from "../middleware/auth.js";
 
 const router = express.Router();
 router.use(express.json());
@@ -18,7 +17,7 @@ router.get("/getInventory", async (req, res) => {
 });
 
 // POST
-router.post("/newInventory", (req, res) => {
+router.post("/newInventory", auth, (req, res) => {
   const newInv = new invModel({
     itemName: req.body.itemName,
     barcode: req.body.barcode,

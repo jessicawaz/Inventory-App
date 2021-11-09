@@ -15,6 +15,7 @@ mongoose
   .connect(process.env.MONGO_URI, {
     useUnifiedTopology: true,
     useNewUrlParser: true,
+    useCreateIndex: true,
   })
   .then(console.log("Connected to MongoDB"))
   .catch((err) => {
@@ -24,10 +25,14 @@ mongoose
 // require API
 import getInventory from "./API/inventory.js";
 import postInventory from "./API/inventory.js";
+import user from "./API/users.js";
+import auth from "./API/auth.js";
 
 // Use API
 app.use("/", getInventory);
 app.use("/", postInventory);
+app.use("/", user);
+app.use("/", auth);
 
 // Active port
 app.listen(PORT, () => console.log(`Server started on port ${PORT}`));
