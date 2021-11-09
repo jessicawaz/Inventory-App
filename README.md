@@ -1,5 +1,5 @@
 # Inventory App
-Add, view, and delete inventory.
+Add, view, and delete inventory using the MERN stack.
 
 ## Stack
   - Node.js
