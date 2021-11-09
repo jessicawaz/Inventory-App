@@ -18,5 +18,7 @@ To run the project, install the project locally using npm
   - Add new items in the form below by clicking the "add" button
   - Delete items in the table with the "trash" button
 
+<br />
+<br />
 
 Authentication learned from TraversyMedia.
