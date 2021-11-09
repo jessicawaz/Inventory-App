@@ -81,7 +81,7 @@ const Inventory = () => {
                     <td>
                       <a
                         className="btn"
-                        href="del"
+                        href="/home"
                         onClick={() => {
                           deleteItem(item._id);
                         }}
