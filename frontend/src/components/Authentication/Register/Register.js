@@ -5,6 +5,7 @@ import { faEyeSlash } from "@fortawesome/free-regular-svg-icons";
 import { faEye } from "@fortawesome/free-regular-svg-icons";
 import "../Register/Register.css";
 import "bootstrap/dist/css/bootstrap.min.css";
+import * as yup from "yup";
 
 const Register = () => {
   const [name, setName] = useState("");
@@ -12,15 +13,34 @@ const Register = () => {
   const [password, setPassword] = useState("");
   const [show, setShow] = useState(false);
 
-  const registerHandler = (e) => {
+  const formYup = yup.object().shape({
+    name: yup.string().required(),
+    email: yup.string().required(),
+    password: yup.string().required(),
+  });
+
+  const registerHandler = async (e) => {
     e.preventDefault();
-    axios
-      .post("http://localhost:5000/users", {
-        name: name,
-        email: email,
-        password: password,
-      })
-      .then(console.log(name, email, password));
+
+    let formData = {
+      name,
+      email,
+      password,
+    };
+
+    const isValidForm = await formYup.isValid(formData);
+
+    if (isValidForm) {
+      axios
+        .post("http://localhost:5000/users", {
+          name: name,
+          email: email,
+          password: password,
+        })
+        .then(console.log(name, email, password));
+    } else {
+      alert("Please enter values for all fields.");
+    }
   };
 
   return (
