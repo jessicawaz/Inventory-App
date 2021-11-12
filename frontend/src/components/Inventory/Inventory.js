@@ -151,7 +151,7 @@ const Inventory = () => {
               name="price"
             />
             <div className="addInv">
-              <button onClick={add} className="insert-btn">
+              <button className="btn btn-outline-primary" onClick={add}>
                 Update Inventory
               </button>
             </div>
