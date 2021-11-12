@@ -10,14 +10,14 @@ import invModel from "./models/inventoryModel.js";
 router.get("/getInventory", async (req, res) => {
   try {
     const getInventory = await invModel.find();
-    res.status(200).json(getInventory);
+    return res.status(200).json(getInventory);
   } catch (err) {
-    res.status(404).json({ message: err.message });
+    return res.status(404).json({ message: err.message });
   }
 });
 
 // POST
-router.post("/newInventory", auth, (req, res) => {
+router.post("/newInventory", (req, res) => {
   const newInv = new invModel({
     itemName: req.body.itemName,
     barcode: req.body.barcode,

@@ -1,0 +1,15 @@
+h4 {
+    margin: 0px 130px;
+}
+
+.forgot {
+    padding: 0px;
+    margin: auto;
+    width: 40%;
+}
+
+.alert {
+    padding: 5px;
+    margin-top: 15px;
+    text-align: center;
+}

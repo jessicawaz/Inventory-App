@@ -1,8 +1,19 @@
 .addInv {
-  padding-top: 30px;
   display: flex;
   align-items: center;
   justify-content: center;
+}
+
+.info {
+  margin-top: -50px;
+}
+
+.addInv h2 {
+  font-size: larger;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  text-decoration: underline;
 }
 
 .addInv h1 {
@@ -20,4 +31,11 @@
 .table {
   text-align: center;
   margin-top: 50px;
+}
+
+.addInv button {
+  margin-left: auto;
+  margin-right: auto;
+  height: 100%;
+  width: 30%;
 }

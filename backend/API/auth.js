@@ -16,36 +16,43 @@ router.post("/auth", (req, res) => {
   const password = req.body.password;
 
   if (!email || !password) {
-    res.status(400).json({ message: "Please enter all fields." });
+    return res.status(400).json({ message: "Please enter all fields." });
   }
 
-  userModel.findOne({ email }).then((user) => {
-    if (!user) {
-      res.status(400).json({ message: "User does not exist." });
-    }
-
-    // Validate Password
-    bcrypt.compare(password, user.password).then((isMatch) => {
-      if (!isMatch) {
-        res.status(400).json({ message: "Invalid Password." });
-      } else {
-        jwt.sign({ id: user.id }, process.env.JWTSECRET, (err, token) => {
-          if (err) {
-            res.status(500).json({ message: "Internal Service Error" });
-          } else {
-            res.json({
-              token: token,
-              user: {
-                id: user.id,
-                name: user.name,
-                email: user.email,
-              },
-            });
-          }
-        });
+  userModel
+    .findOne({ email })
+    .then((user) => {
+      if (!user) {
+        return res.status(400).json({ message: "User does not exist." });
       }
+
+      // Validate Password
+      bcrypt.compare(password, user.password).then((isMatch) => {
+        if (!isMatch) {
+          return res.status(400).json({ message: "Invalid Password." });
+        } else {
+          jwt.sign({ id: user.id }, process.env.JWTSECRET, (err, token) => {
+            if (err) {
+              return res
+                .status(500)
+                .json({ message: "Internal Service Error" });
+            } else {
+              return res.json({
+                token: token,
+                user: {
+                  id: user.id,
+                  name: user.name,
+                  email: user.email,
+                },
+              });
+            }
+          });
+        }
+      });
+    })
+    .catch((err) => {
+      console.log(err);
     });
-  });
 });
 
 router.get("/user", auth, (req, res) => {
@@ -53,7 +60,7 @@ router.get("/user", auth, (req, res) => {
     .findById(req.user.id)
     .select("-password")
     .then((user) => {
-      res.json(user);
+      return res.json(user);
     });
 });
 

@@ -98,14 +98,15 @@ const Inventory = () => {
       </div>
 
       <div className="addInv">
-        <button onClick={() => setButtonClicked(true)}>
-          Add New Inventory Log
+        <button onClick={() => setButtonClicked(!buttonClicked)}>
+          Add New Item
         </button>
       </div>
 
       {buttonClicked ? (
-        <div className="addInv">
+        <div className="addInv info">
           <form>
+            <h2>Item Info</h2>
             <h1>Item Name</h1>
             <input
               onChange={(e) => {
