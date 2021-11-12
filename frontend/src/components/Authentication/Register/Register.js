@@ -37,7 +37,10 @@ const Register = () => {
           email: email,
           password: password,
         })
-        .then(console.log(name, email, password));
+        .then(() => {
+          alert("Successfully registered user! Please log in");
+          window.location.href = "/login";
+        });
     } else {
       alert("Please enter values for all fields.");
     }
