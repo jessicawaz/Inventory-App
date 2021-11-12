@@ -3,13 +3,13 @@ Add, view, and delete inventory using the MERN stack.
 
 ## Demo
 ### Home
-<img src="./gifs/home.gif" alt="Home Demo" width="300" height="auto">
+<img src="./gifs/home.gif" alt="Home Demo" width="600" height="auto">
 
 ### Login
-<img src="./gifs/login.gif" alt="Login Demo" width="300" height="auto">
+<img src="./gifs/login.gif" alt="Login Demo" width="600" height="auto">
 
 ### Register
-<img src="./gifs/register.gif" alt="Register Demo" width="300" height="auto">
+<img src="./gifs/register.gif" alt="Register Demo" width="600" height="auto">
 
 ## Stack
   - Node.js
