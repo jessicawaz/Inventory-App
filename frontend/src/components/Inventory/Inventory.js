@@ -98,7 +98,10 @@ const Inventory = () => {
       </div>
 
       <div className="addInv">
-        <button onClick={() => setButtonClicked(!buttonClicked)}>
+        <button
+          className="btn btn-outline-primary"
+          onClick={() => setButtonClicked(!buttonClicked)}
+        >
           Add New Item
         </button>
       </div>

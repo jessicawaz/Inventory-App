@@ -97,7 +97,7 @@ const Register = () => {
           </div>
         )}
 
-        <button className="btn-primary" onClick={registerHandler}>
+        <button className="btn btn-primary" onClick={registerHandler}>
           Register
         </button>
       </form>

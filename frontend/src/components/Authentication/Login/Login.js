@@ -124,7 +124,7 @@ const Login = () => {
         )}
 
         <button className="forgot btn btn-link">Forgot Password</button>
-        <button className="btn-primary" onClick={loginHandler}>
+        <button className="btn btn-primary" onClick={loginHandler}>
           Sign in
         </button>
         {isAuth ? (

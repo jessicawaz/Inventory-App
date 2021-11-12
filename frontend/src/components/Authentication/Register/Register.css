@@ -17,6 +17,10 @@ input {
     padding: 10px;
 }
 
+label {
+    padding-top: 10px;
+}
+
 .pass {
    position: absolute;
    margin-left: 5px;
