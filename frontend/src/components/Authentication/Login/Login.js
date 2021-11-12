@@ -54,6 +54,7 @@ const Login = () => {
         .then((data) => {
           if (data.data.user) {
             // store token in local storage
+            localStorage.setItem("user", data.data.user.name);
             localStorage.setItem("token", data.data.token);
             axios
               .get("http://localhost:5000/user", {

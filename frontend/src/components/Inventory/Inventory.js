@@ -26,7 +26,7 @@ const Inventory = () => {
     axios
       .get("http://localhost:5000/getInventory")
       .then((inv) => setItems(inv.data));
-  });
+  }, []);
 
   const add = async (e) => {
     let formData = {
